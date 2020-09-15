@@ -41,19 +41,13 @@ public class AbstractBootstrapInitializerTest {
     @Test
     public void assertInit() {
         AbstractBootstrapInitializer abstractBootstrapInitializer = mock(AbstractBootstrapInitializer.class, Mockito.CALLS_REAL_METHODS);
-
-        ProxyConfiguration proxyConfig = mock(ProxyConfiguration.class);
-        doReturn(proxyConfig).when(abstractBootstrapInitializer).getProxyConfiguration(any());
-
+        doReturn(mock(ProxyConfiguration.class)).when(abstractBootstrapInitializer).getProxyConfiguration(any());
         SchemaContexts schemaContexts = mock(SchemaContexts.class);
         ConfigurationProperties properties = mock(ConfigurationProperties.class);
         when(properties.getValue(any())).thenReturn(Boolean.FALSE);
         when(schemaContexts.getProps()).thenReturn(properties);
         doReturn(schemaContexts).when(abstractBootstrapInitializer).decorateSchemaContexts(any());
-
-        TransactionContexts transactionContexts = mock(TransactionContexts.class);
-        doReturn(transactionContexts).when(abstractBootstrapInitializer).decorateTransactionContexts(any());
-
+        doReturn(mock(TransactionContexts.class)).when(abstractBootstrapInitializer).decorateTransactionContexts(any());
         YamlProxyConfiguration yamlConfig = mock(YamlProxyConfiguration.class);
         int port = 2020;
         abstractBootstrapInitializer.init(yamlConfig, port);
