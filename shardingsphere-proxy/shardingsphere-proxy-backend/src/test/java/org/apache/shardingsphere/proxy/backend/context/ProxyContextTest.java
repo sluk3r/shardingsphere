@@ -143,5 +143,4 @@ public final class ProxyContextTest {
         when(schemaContext.getRuntimeContext()).thenReturn(runtimeContext);
         return Collections.singletonMap("schema", schemaContext);
     }
-    
 }
